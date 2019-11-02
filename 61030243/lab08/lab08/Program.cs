@@ -22,17 +22,16 @@ namespace lab08
             dict1.Add("Eight", 8);
             dict1.Add("Nine", 9);
             dict1.Add("Ten", 10);
-
-            foreach (var item in dict1)
+            if (dict1.ContainsKey("One"))
             {
-                Console.WriteLine(item);
+                int value = dict1["One"];
+                Console.WriteLine(value);
             }
-
-            foreach (var item in dict1)
+            if (dict1.ContainsKey("Eleven"))
             {
-                Console.WriteLine("key = {0}, value = {1}", item.Key, item.Value);
+                int value = dict1["Eleven"];
+                Console.WriteLine(value);
             }
-
             Console.ReadLine();
         }
     }
