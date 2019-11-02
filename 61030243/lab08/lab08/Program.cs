@@ -25,13 +25,13 @@ namespace lab08
                 "December"
             };
 
-            var sortedValues = from x in month
-                               orderby x.Length descending, x descending
-                               select x;
-
             //var sortedValues = from x in month
-            //                   orderby x.Length , x 
+            //                   orderby x.Length descending, x descending
             //                   select x;
+
+            var sortedValues = from x in month
+                               orderby x.Length, x
+                               select x;
 
             foreach (string str in sortedValues)
             {
