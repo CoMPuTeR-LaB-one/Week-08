@@ -10,42 +10,21 @@ namespace lab08
     {
         static void Main(string[] args)
         {
-            Queue<int> q = new Queue<int>();
-            Console.WriteLine("-- enqueue 3 items -- ");
-            q.Enqueue(10);
-            q.Enqueue(20);
-            q.Enqueue(30);
-            Console.Write("Queue contains : ");
-            foreach (var item in q)
+            Queue<string> queue1 = new Queue<string>();
+            queue1.Enqueue("Red");
+            queue1.Enqueue("Green");
+            queue1.Enqueue("Blue");
+            queue1.Enqueue("Orange");
+            queue1.Enqueue("Yellow");
+            Console.WriteLine("The elements in the queue are:");
+            foreach (string s in queue1)
             {
-                Console.Write(item + " ");
+                Console.WriteLine(s);
             }
-            Console.WriteLine(Environment.NewLine + "q.Count  = {0}", q.Count);
-            Console.WriteLine("q.Peek = {0}", q.Peek());
-
-            Console.WriteLine("-- enqueue more items -- ");
-            q.Enqueue(40);
-            q.Enqueue(50);
-
-            Console.Write("Queue contains : ");
-            foreach (var item in q)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine(Environment.NewLine + "q.Count  = {0}", q.Count);
-            Console.WriteLine("q.Peek = {0}", q.Peek());
-
-            Console.WriteLine("-- dequeue -- ");
-            int i = q.Dequeue();
-            Console.WriteLine("i = {0}", i);
-
-            Console.Write("Queue contains : ");
-            foreach (var item in q)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine(Environment.NewLine + "q.Count  = {0}", q.Count);
-            Console.WriteLine("q.Peek = {0}", q.Peek());
+            Console.WriteLine("The element Red is contain in the queue:" + queue1.Contains("Red"));
+            Console.WriteLine("The element Black is contain in the queue:" + queue1.Contains("Black"));
+            Console.WriteLine("The element Purple is contain in the queue:" + queue1.Contains("Purple"));
+            Console.WriteLine("The element Green is contain in the queue:" + queue1.Contains("Green"));
             Console.ReadLine();
         }
     }
