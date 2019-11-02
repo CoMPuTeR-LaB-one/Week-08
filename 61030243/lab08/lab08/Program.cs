@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,15 +11,22 @@ namespace lab08
     {
         static void Main(string[] args)
         {
-            Queue<string> queue1 = new Queue<string>();
-            queue1.Enqueue("RED");
-            queue1.Enqueue("BLUE");
-            queue1.Enqueue("YELLOW");
-            queue1.Enqueue("GREEN");
-
-            Console.WriteLine("The elements in the queue are:" + queue1.Count);
-            queue1.Clear();
-            Console.WriteLine("The elements in the queue are after the clearmethod: " + queue1.Count);
+            Queue<int> queue1 = new Queue<int>();
+            queue1.Enqueue(10);
+            queue1.Enqueue(20);
+            queue1.Enqueue(30);
+            queue1.Enqueue(40);
+            Console.WriteLine("The queue elements are:");
+            foreach (int i in queue1)
+            {
+                Console.WriteLine(i);
+            }
+            ArrayList array = new ArrayList(queue1.ToArray());
+            Console.WriteLine("\nContents of the copy");
+            foreach (int i in array)
+            {
+                Console.WriteLine(i);
+            }
             Console.ReadLine();
         }
     }
