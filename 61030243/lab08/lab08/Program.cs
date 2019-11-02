@@ -10,30 +10,26 @@ namespace lab08
     {
         static void Main(string[] args)
         {
-            int[] data = new int[10];
-            data[0] = 0;
-            data[1] = 1;
-            data[2] = 2;
-            data[3] = 3;
-            data[4] = 4;
-            data[5] = 5;
-            data[6] = 6;
-            data[7] = 7;
-            data[8] = 8;
-            data[9] = 9;
-            data[10] = 10;
-            Console.WriteLine(data[0]);
-            Console.WriteLine(data[1]);
-            Console.WriteLine(data[2]);
-            Console.WriteLine(data[3]);
-            Console.WriteLine(data[4]);
-            Console.WriteLine(data[5]);
-            Console.WriteLine(data[6]);
-            Console.WriteLine(data[7]);
-            Console.WriteLine(data[8]);
-            Console.WriteLine(data[9]);
-            Console.WriteLine(data[10]);
-            Console.ReadLine();
+            int[] month = { 2, 5, 5, 1, 3, 6, 1, 4, 0, 2, 5, 0 };
+            string[] days =
+            {
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Tuesday",
+                "Friday",
+                "Saturday",
+            };
+            Console.Write("Enter date : ");
+            int date = int.Parse(Console.ReadLine());
+            Console.Write("Enter month: ");
+            int inmonth = int.Parse(Console.ReadLine());
+
+            int day = (date + (month[inmonth - 1 ]) - 1) % 7;
+
+            Console.WriteLine($"{date}/{inmonth}/2561 is {days[day]}");
+            Console.Read();
         }
     }
 }
