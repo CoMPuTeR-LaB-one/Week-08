@@ -11,24 +11,28 @@ namespace lab08
     {
         static void Main()
         {
-            ArrayList list = new ArrayList();
-            Console.WriteLine("Create a list");
-            Console.WriteLine("List capacity = {0,2}", list.Capacity);
-            for (int i = 0; i < 100; i++)
+            ArrayList list1 = new ArrayList();
+            list1.Add(10);
+            list1.Add(20);
+            list1.Add(30);
+            list1.Add(40);
+            Console.WriteLine("list1");
+            for (int i = 0; i < list1.Count; i++)
             {
-                Console.Write("Add int to list : {0,2} => ", i);
-                list.Add(i);
-                Console.WriteLine("List count =  {0,3}, capacity = {1,3}  ",
-                  list.Count, list.Capacity);
+                Console.WriteLine(list1[i]);
             }
-            Console.WriteLine("-----------------------");
-            for (int i = 0; i < 100; i++)
+            ArrayList list2 = new ArrayList(list1);
+            list2.Clear();
+            list2.Add(55);
+            list2.Add(66);
+            list2.Add(77);
+            Console.WriteLine("list2");
+            for (int i = 0; i < list2.Count; i++)
             {
-                Console.Write("Remove int from list : {0,2} => ", i);
-                list.Remove(i);
-                Console.WriteLine("List count =  {0,3}, capacity = {1,3}  ",
-                  list.Count, list.Capacity);
+                Console.WriteLine(list2[i]);
             }
+
+            Console.WriteLine(list2[2*1]);
             Console.ReadLine();
         }
     }
