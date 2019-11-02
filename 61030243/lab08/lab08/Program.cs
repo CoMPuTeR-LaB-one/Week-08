@@ -24,9 +24,8 @@ namespace lab08
             {
                 Console.WriteLine(s);
             }
-            Console.WriteLine("The element RED contain in the stack " + stack1.Contains("RED"));
-            Console.WriteLine("The element YELLOW contain in the stack " + stack1.Contains("YELLOW"));
-            Console.WriteLine("The element BLACK contain in the stack " + stack1.Contains("BLACK"));
+            stack1.Clear();
+            Console.WriteLine("After apply the clear method the elements in the stack are:" + stack1.Count);
             Console.ReadLine();
         }
     }
