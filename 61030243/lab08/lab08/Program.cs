@@ -20,13 +20,28 @@ namespace lab08
             weeks.Add("6", "Friday");
             weeks.Add("7", "Saturday");
 
-            // Method ContainKey()
-            Console.WriteLine("The  key element \"8\" is contain in the Hashtable weeks : " + weeks.ContainsKey("8"));
+            Console.WriteLine("---- elements in Hashtable weeks ----");
+            foreach (DictionaryEntry day in weeks)
+            {
+                Console.WriteLine(day.Key + "   -   " + day.Value);
+            }
 
-            // Method ContainValue()
-            Console.WriteLine("The  key element \"Wednesday\" is contain in the Hashtable weeks : " + weeks.ContainsValue("Wednesday"));
+            Console.WriteLine("\n---- weeks.Remove(\"4\"); ----");
+            weeks.Remove("4");
+            foreach (DictionaryEntry day in weeks)
+            {
+                Console.WriteLine(day.Key + "   -   " + day.Value);
+            }
+
+            Console.WriteLine("\n---- weeks.Clear(); ----");
+            weeks.Clear();
+            foreach (DictionaryEntry day in weeks)
+            {
+                Console.WriteLine(day.Key + "   -   " + day.Value);
+            }
 
             Console.ReadLine();
+
         }
     }
 }
