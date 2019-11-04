@@ -4,44 +4,67 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
+//ให้สร้างแฮชเทเบิล ที่บรรจุรหัสไปรษณีย์และชื่อจังหวัด  (ทำในระดับจังหวัดเท่านั้น) แล้วค้นหาจากรหัสไปรษณีย์ที่กำหนด
 
 namespace lab08
 {
+    //7426
     class Program
     {
         static void Main(string[] args)
         {
-            Hashtable weeks = new Hashtable();
-            weeks.Add("1", "Sunday");
-            weeks.Add("2", "Monday");
-            weeks.Add("3", "Tuesday");
-            weeks.Add("4", "Wednesday");
-            weeks.Add("5", "Thursday");
-            weeks.Add("6", "Friday");
-            weeks.Add("7", "Saturday");
+            string sprovide ,lsprovide = null;
+            string snumpost ,lsnumpost = null;
+            int numpost;
 
-            Console.WriteLine("---- elements in Hashtable weeks ----");
-            foreach (DictionaryEntry day in weeks)
+            Hashtable Provide = new Hashtable();
+
+
+            StreamReader fprovide = null;
+            StreamReader fnumpost = null;
+
+            try
             {
-                Console.WriteLine(day.Key + "   -   " + day.Value);
+                fprovide = new StreamReader("./provide.txt");
+                fnumpost = new StreamReader("./numpost.txt");
+                while (((sprovide = fprovide.ReadLine().ToString()) != "...") && ((snumpost = fnumpost.ReadLine().ToString()) != "..."))
+                {
+                    if (snumpost.Equals(lsnumpost))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Provide.Add(snumpost, sprovide);
+                        //Console.WriteLine($"{sprovide} => {snumpost}");
+                        //lsprovide = sprovide;
+                        lsnumpost = snumpost;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        insert:
+            try
+            {
+                Console.Write("Enter Postcode : ");
+                numpost = int.Parse(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                goto insert;
             }
 
-            Console.WriteLine("\n---- weeks.Remove(\"4\"); ----");
-            weeks.Remove("4");
-            foreach (DictionaryEntry day in weeks)
+            foreach (DictionaryEntry dicprovide in Provide)
             {
-                Console.WriteLine(day.Key + "   -   " + day.Value);
+                if (dicprovide.Key.Equals(numpost.ToString())) 
+                    Console.WriteLine(dicprovide.Key + "   -   " + dicprovide.Value);
             }
-
-            Console.WriteLine("\n---- weeks.Clear(); ----");
-            weeks.Clear();
-            foreach (DictionaryEntry day in weeks)
-            {
-                Console.WriteLine(day.Key + "   -   " + day.Value);
-            }
-
-            Console.ReadLine();
-
+            Console.ReadKey();
         }
     }
 }
