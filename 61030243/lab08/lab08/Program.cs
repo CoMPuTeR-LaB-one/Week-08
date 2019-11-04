@@ -15,54 +15,46 @@ namespace lab08
     {
         static void Main(string[] args)
         {
-            string sprovide ,lsprovide = null;
-            string snumpost ,lsnumpost = null;
-            int numpost;
+            string sname = null;
+            string sid = null;
+            int id;
 
-            Hashtable Provide = new Hashtable();
+            Hashtable student = new Hashtable();
 
 
-            StreamReader fprovide = null;
-            StreamReader fnumpost = null;
+            StreamReader fname = null;
+            StreamReader fid = null;
 
             try
             {
-                fprovide = new StreamReader("./provide.txt");
-                fnumpost = new StreamReader("./numpost.txt");
-                while (((sprovide = fprovide.ReadLine().ToString()) != "...") && ((snumpost = fnumpost.ReadLine().ToString()) != "..."))
+                fname = new StreamReader("./name.txt");//file form folder bin
+                fid = new StreamReader("./id.txt");
+                while (((sname = fname.ReadLine().ToString()) != ".") && ((sid = fid.ReadLine().ToString()) != "."))
                 {
-                    if (snumpost.Equals(lsnumpost))
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        Provide.Add(snumpost, sprovide);
-                        //Console.WriteLine($"{sprovide} => {snumpost}");
-                        //lsprovide = sprovide;
-                        lsnumpost = snumpost;
-                    }
+                        student.Add(sid, sname);
+                        Console.WriteLine($"{sname} => {sid}");
                 }
             }
             catch(Exception e)
             {
                 Console.WriteLine(e);
             }
+            Console.WriteLine(  );
         insert:
             try
             {
                 Console.Write("Enter Postcode : ");
-                numpost = int.Parse(Console.ReadLine());
+                id = int.Parse(Console.ReadLine());
             }
             catch (FormatException)
             {
                 goto insert;
             }
-
-            foreach (DictionaryEntry dicprovide in Provide)
+            Console.WriteLine(  );
+            foreach (DictionaryEntry dicstudent in student)
             {
-                if (dicprovide.Key.Equals(numpost.ToString())) 
-                    Console.WriteLine(dicprovide.Key + "   -   " + dicprovide.Value);
+                if (dicstudent.Key.Equals(id.ToString())) 
+                    Console.WriteLine(dicstudent.Key + "    " + dicstudent.Value);
             }
             Console.ReadKey();
         }
